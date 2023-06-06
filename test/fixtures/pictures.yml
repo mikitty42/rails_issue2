@@ -3,7 +3,9 @@
 one:
   image: MyText
   content: MyText
+  user: one
 
 two:
   image: MyText
   content: MyText
+  user: two
