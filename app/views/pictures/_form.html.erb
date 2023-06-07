@@ -1,0 +1,23 @@
+<h2>Picture投稿画面</h2>
+<%= form_with(model: @picture,local: true) do |form| %>
+    <% if @picture.errors.any? %>
+        <div id='error_explanation'>
+            <p><%= @picture.errors.count %>件のエラーがあります</p>
+                <% @picture.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+                <% end %>
+        </div>
+    <% end %>
+    
+    <div class='pictuer_image'>
+        <%= form.label :image %>
+        <%= form. %>
+    </div>
+    
+    <div class='picture_content'>
+        <%= form.label :content %>
+        <%= form.text_field :content %>
+    </div>
+    <%= form.submit %>
+<% end %>
+
