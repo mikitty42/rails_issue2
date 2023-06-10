@@ -5,19 +5,19 @@ class PicturesController < ApplicationController
   end
   
   def new
-      @picture = Picture.new
+      if params[:back]
+      @picture = Picture.new(picture_params)
+      else
+          @picture = Picture.new
+      end
   end
   
   def create
       @picture = Picture.new(picture_params)
-      if params[:back]
-          render :new
+      if @picture.save
+        redirect_to pictures_path, notice: '投稿に成功しました'
       else
-          if @picture.save
-              redirect_to pictures_path, notice: '投稿に成功しました'
-          else
-              render :new
-          end
+        render :new
       end
   end
   
@@ -52,6 +52,6 @@ class PicturesController < ApplicationController
   private
   
   def picture_params
-      params.require(:picture).permit(:image,:content)
+      params.require(:picture).permit(:image,:content,:image_cache)
   end
 end
