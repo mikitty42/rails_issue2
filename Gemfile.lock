@@ -62,6 +62,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
+    bcrypt (3.1.18)
     better_errors (2.10.0)
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
@@ -123,6 +124,7 @@ GEM
     method_source (1.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.8.2)
     minitest (5.18.0)
     msgpack (1.7.0)
     net-imap (0.3.4)
@@ -135,7 +137,12 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
+    nokogiri (1.15.2)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
     nokogiri (1.15.2-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
     pg (1.5.3)
     pry (0.14.2)
@@ -246,9 +253,12 @@ GEM
     zeitwerk (2.6.8)
 
 PLATFORMS
+  ruby
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
+  bcrypt
   better_errors
   binding_of_caller
   bootsnap (>= 1.4.4)
@@ -258,6 +268,9 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.3)
   mini_magick
+  net-imap
+  net-pop
+  net-smtp
   pg (~> 1.1)
   pry-rails
   puma (~> 5.0)

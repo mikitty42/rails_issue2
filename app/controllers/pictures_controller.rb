@@ -13,7 +13,7 @@ class PicturesController < ApplicationController
   end
   
   def create
-      @picture = Picture.new(picture_params)
+      @picture = current_user.pictures.build(picture_params)
       if @picture.save
         redirect_to pictures_path, notice: '投稿に成功しました'
       else
@@ -32,7 +32,7 @@ class PicturesController < ApplicationController
   def update
       @picture = Picture.find(params[:id])
       if @picture.update(picture_params)
-          redirect_to pictures_path,notice: '投稿を削除しました'
+          redirect_to pictures_path,notice: '投稿を編集しました'
       else
           render :edit
       end
@@ -45,7 +45,7 @@ class PicturesController < ApplicationController
   end
   
   def confirm
-      @picture = Picture.new(picture_params)
+      @picture = current_user.pictures.build(picture_params)
       render :new if @picture.invalid?
   end
   

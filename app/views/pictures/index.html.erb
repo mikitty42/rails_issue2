@@ -5,12 +5,14 @@
     <tr>
         <th>Picture</th>
         <th>Content</th>
+        <th>投稿者名</th>
     </tr>
     
     <% @pictures.each do |picture| %>
     <tr>
-        <td><%= image_tag picture.image.url %></td>
+        <td><%= image_tag picture.image.url,size:"80x80" %></td>
         <td><%= picture.content %></td>
+        <td><%= picture.user.name %></td>
         <td><%= link_to 'Pictureの詳細を確認する',picture_path(picture.id) %></td>
         <td><%= link_to 'Pictureを編集する',edit_picture_path(picture.id) %></td>
         <td><%= link_to 'Pictureを削除する',picture_path(picture.id),method: :delete,data: { confirm: '本当に削除してよろしいですか'} %></td>
